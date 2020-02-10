@@ -1,0 +1,51 @@
+Question 3.
+
+Between the two codes, the one in prog2.java is better. In prog2.java, the variable name is an instance variable and thus is private as it should be.
+Variables exclusive to a class usually should not be public and accessible by other classes. Instead other classes should be utilizing setter and getter methods to access it. 
+Having this name variable as public defeats a good majority of class A existing at all, as class B can set and change the variable however it would like without any restrictions from class A. 
+In this situation loose coupling is better and the standard for practice.
+
+Question 4.
+
+For the code in prog3.java, instead of having all the functions in the single MyReader class, they should all be in their own separate classes. 
+They would be separate classes associated with the MyReader class though. Having all these methods cluttered together in one class can cause confusion
+and can make keeping track of different variables extremely difficult. The constructor would be overloaded with parameters as well, again, causing a lot of clutter and increas the chance of errors.
+
+Example: 
+
+//all repsective methods for each "method or reading" would be moved to class they belong to. 
+
+class MyReader {
+
+    public boolean validateLocation(String pathIP) {
+         return ping(pathIP) && checkFTP(pathIP);
+    }
+    private boolean checkFTP(String pathIP) {
+         return true;
+    }
+
+    private boolean ping(String pathIP) {
+          return true;
+    }
+
+class ReadDisk {
+
+    public String readFromDisk(String fileName) {
+         return "data of " + fileName;
+    }
+}
+
+class ReadWeb {
+
+    public String readFromWeb(String url) {
+         return "data of " + url;
+    }
+}
+
+class ReadNetwork {
+
+    public String readFromNetwork(String networkAddress) {
+         return "data of " + networkAddress;
+    }
+
+}
